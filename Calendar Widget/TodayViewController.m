@@ -33,14 +33,15 @@
     df.dateStyle = NSDateFormatterLongStyle;
     [self.dateLabel setStringValue:[df stringFromDate:[NSDate date]]];
     
-    [self updateCalendar];
+    NSDate* d = [NSDate date];
+    [self updateCalendar:d];
 }
 
-- (void)updateCalendar {
+- (void)updateCalendar:(NSDate*)date {
     // Work out calendar
     NSCalendar* cal = [NSCalendar currentCalendar];
-    NSDateComponents* now = [cal components:NSCalendarUnitDay
-                                   fromDate:[NSDate date]];
+    NSDateComponents* now = [cal components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear
+                                   fromDate:date];
     NSUInteger today = now.day;
     
     NSMutableArray* monthArray = [[NSMutableArray alloc] initWithCapacity:31];
@@ -54,9 +55,12 @@
     NSDate* beginningOfMonth = [cal dateFromComponents:now];
     NSDateComponents* start = [cal components:NSCalendarUnitWeekday fromDate:beginningOfMonth];
 
-    NSInteger dayOfWeek = start.weekday;
     self.weekStartsOnMonday = YES;
-    for (NSInteger i = 0; i < dayOfWeek - 1 - self.weekStartsOnMonday ? 1 : 0; i++) {
+    NSInteger dayOfWeek = start.weekday - (self.weekStartsOnMonday ? 1 : 0);
+    if (dayOfWeek < 1) {
+        dayOfWeek = 7 + dayOfWeek;
+    }
+    for (NSInteger i = 1; i < dayOfWeek ; i++) {
         [monthArray addObject:day];
     }
     
