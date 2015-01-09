@@ -1,0 +1,4 @@
+/* Display name and description for this extension. */
+"CFBundleDisplayName" = "This Month";
+"com.apple.notificationcenter.widget.description" = "Shows this month in a simple calendar";
+

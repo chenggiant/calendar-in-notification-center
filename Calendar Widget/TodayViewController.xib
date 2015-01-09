@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="TodayViewController">
+            <connections>
+                <outlet property="collectionView" destination="Qph-Eu-UNX" id="0iz-qR-rL7"/>
+                <outlet property="dateLabel" destination="bcj-Ic-CdD" id="zzg-kT-03l"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView simulatedAppContext="notificationCenter" translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="129"/>
+            <subviews>
+                <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cBs-ha-ZQM">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                    <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="dmr-5A-X6a">
+                        <rect key="frame" x="1" y="1" width="248" height="158"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView focusRingType="none" maxNumberOfColumns="7" id="Qph-Eu-UNX">
+                                <rect key="frame" x="0.0" y="0.0" width="248" height="158"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="primaryBackgroundColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                <connections>
+                                    <binding destination="tiL-am-HRd" name="content" keyPath="arrangedObjects" id="yV5-0T-IdO"/>
+                                    <outlet property="itemPrototype" destination="lKV-Us-ZlD" id="4E8-BT-3Uh"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                    </clipView>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="tiu-tH-iYZ"/>
+                    </constraints>
+                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="vg5-PY-nkx">
+                        <rect key="frame" x="1" y="144" width="233" height="15"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="rdf-QC-ifn">
+                        <rect key="frame" x="234" y="1" width="15" height="143"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                </scrollView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bcj-Ic-CdD">
+                    <rect key="frame" x="141" y="108" width="38" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="eSp-bz-VO1">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="cBs-ha-ZQM" secondAttribute="bottom" id="HsD-PL-mAb"/>
+                <constraint firstAttribute="centerX" secondItem="bcj-Ic-CdD" secondAttribute="centerX" id="Xhi-k3-MzU"/>
+                <constraint firstItem="cBs-ha-ZQM" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="cqs-8c-z3m"/>
+                <constraint firstAttribute="trailing" secondItem="cBs-ha-ZQM" secondAttribute="trailing" id="eRG-u8-7Wb"/>
+                <constraint firstItem="cBs-ha-ZQM" firstAttribute="top" secondItem="bcj-Ic-CdD" secondAttribute="bottom" constant="8" id="egg-wG-u5q"/>
+                <constraint firstItem="bcj-Ic-CdD" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="4" id="gXU-9t-brr"/>
+            </constraints>
+            <point key="canvasLocation" x="258" y="143.5"/>
+        </customView>
+        <collectionViewItem id="lKV-Us-ZlD">
+            <connections>
+                <outlet property="view" destination="bZK-Fa-n9U" id="EkL-pT-RIX"/>
+            </connections>
+        </collectionViewItem>
+        <view translatesAutoresizingMaskIntoConstraints="NO" id="bZK-Fa-n9U">
+            <rect key="frame" x="0.0" y="0.0" width="38" height="17"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9C9-2X-mJm">
+                    <rect key="frame" x="0.0" y="0.0" width="38" height="17"/>
+                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="tXT-VP-Yp6">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="selectedControlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="lKV-Us-ZlD" name="textColor" keyPath="representedObject.textColor" id="nhe-1v-CPP"/>
+                        <binding destination="lKV-Us-ZlD" name="value" keyPath="representedObject.date" id="UfF-qF-gm8"/>
+                    </connections>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="9C9-2X-mJm" secondAttribute="bottom" id="3xD-7A-nlG"/>
+                <constraint firstAttribute="trailing" secondItem="9C9-2X-mJm" secondAttribute="trailing" id="FO7-Ed-3rA"/>
+                <constraint firstItem="9C9-2X-mJm" firstAttribute="top" secondItem="bZK-Fa-n9U" secondAttribute="top" id="aA9-sB-1nU"/>
+                <constraint firstItem="9C9-2X-mJm" firstAttribute="leading" secondItem="bZK-Fa-n9U" secondAttribute="leading" id="lx4-Sx-IAb"/>
+            </constraints>
+            <point key="canvasLocation" x="241" y="294.5"/>
+        </view>
+        <arrayController objectClassName="WSLDay" editable="NO" id="tiL-am-HRd">
+            <declaredKeys>
+                <string>date</string>
+                <string>today</string>
+            </declaredKeys>
+            <connections>
+                <binding destination="-2" name="contentArray" keyPath="self.days" id="W5S-De-8tV"/>
+            </connections>
+        </arrayController>
+    </objects>
+</document>
