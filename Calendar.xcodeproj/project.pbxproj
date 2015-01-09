@@ -263,6 +263,7 @@
 				TargetAttributes = {
 					C419D75C1A5EC9380023553C = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = QHTQ52R3NV;
 					};
 					C419D7721A5EC9380023553C = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -585,6 +586,7 @@
 				C419D7ED1A6029E80023553C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
