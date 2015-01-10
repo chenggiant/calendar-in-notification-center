@@ -27,13 +27,18 @@
 -(void)awakeFromNib {
     // Setup view
     self.collectionView.backgroundColors = @[ [NSColor clearColor] ];
-    NSDateFormatter* df = [[NSDateFormatter alloc] init];
-    df.timeStyle = NSDateFormatterNoStyle;
-    df.dateStyle = NSDateFormatterLongStyle;
-    [self.dateLabel setStringValue:[df stringFromDate:[NSDate date]]];
-    
+
+    // Initialise date
     NSDate* d = [NSDate date];
     [self updateCalendar:d];
+    [self updateDateLabel:d];
+}
+
+- (void)updateDateLabel:(NSDate*) date {
+    NSString* dateFormatString = [NSDateFormatter dateFormatFromTemplate:@"MMMMyyyy" options:0 locale:[NSLocale currentLocale]];
+    NSDateFormatter* df = [[NSDateFormatter alloc] init];
+    df.dateFormat = dateFormatString;
+    [self.dateLabel setStringValue:[df stringFromDate:date]];
 }
 
 - (void)updateCalendar:(NSDate*)date {
