@@ -17,8 +17,6 @@
 
 @property (nonatomic, strong) IBOutlet NSTextField* dateLabel;
 
-@property (nonatomic, assign) BOOL weekStartsOnMonday;
-
 @end
 
 @implementation TodayViewController
@@ -55,8 +53,7 @@
     NSDate* beginningOfMonth = [cal dateFromComponents:now];
     NSDateComponents* start = [cal components:NSCalendarUnitWeekday fromDate:beginningOfMonth];
 
-    self.weekStartsOnMonday = YES;
-    NSInteger dayOfWeek = start.weekday - (self.weekStartsOnMonday ? 1 : 0);
+    NSInteger dayOfWeek = start.weekday - cal.firstWeekday + 1;
     if (dayOfWeek < 1) {
         dayOfWeek = 7 + dayOfWeek;
     }
