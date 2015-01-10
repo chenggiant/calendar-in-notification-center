@@ -39,9 +39,18 @@
 - (void)updateCalendar:(NSDate*)date {
     // Work out calendar
     NSCalendar* cal = [NSCalendar currentCalendar];
-    NSDateComponents* now = [cal components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear
+    NSDateComponents* dateComponents = [cal components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear
                                    fromDate:date];
-    NSUInteger today = now.day;
+    NSDateComponents* nowCompoents = [cal components:NSCalendarUnitMonth | NSCalendarUnitYear
+                                            fromDate:[NSDate date]];
+    NSUInteger today;
+    if (nowCompoents.month == dateComponents.month && nowCompoents.year == dateComponents.year) {
+        today = dateComponents.day;
+    }
+    else {
+        // this will never be matched
+        today = 0;
+    }
     
     NSMutableArray* monthArray = [[NSMutableArray alloc] initWithCapacity:31];
     
@@ -60,8 +69,8 @@
     day.date = @"";
     day.textColor = [NSColor whiteColor];
     
-    [now setDay:1];
-    NSDate* beginningOfMonth = [cal dateFromComponents:now];
+    [dateComponents setDay:1];
+    NSDate* beginningOfMonth = [cal dateFromComponents:dateComponents];
     NSDateComponents* start = [cal components:NSCalendarUnitWeekday fromDate:beginningOfMonth];
 
     NSInteger dayOfWeek = start.weekday - cal.firstWeekday + 1;
