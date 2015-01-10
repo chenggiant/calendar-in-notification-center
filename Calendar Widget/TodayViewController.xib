@@ -16,7 +16,7 @@
         <customView simulatedAppContext="notificationCenter" translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY">
             <rect key="frame" x="0.0" y="0.0" width="320" height="129"/>
             <subviews>
-                <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cBs-ha-ZQM">
+                <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cBs-ha-ZQM">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="dmr-5A-X6a">
                         <rect key="frame" x="1" y="1" width="248" height="158"/>
@@ -81,8 +81,8 @@
                         <color key="backgroundColor" name="selectedControlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
-                        <binding destination="lKV-Us-ZlD" name="textColor" keyPath="representedObject.textColor" id="nhe-1v-CPP"/>
                         <binding destination="lKV-Us-ZlD" name="value" keyPath="representedObject.date" id="UfF-qF-gm8"/>
+                        <binding destination="lKV-Us-ZlD" name="textColor" keyPath="representedObject.textColor" id="nhe-1v-CPP"/>
                     </connections>
                 </textField>
             </subviews>
