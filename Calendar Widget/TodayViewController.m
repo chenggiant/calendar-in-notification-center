@@ -8,6 +8,7 @@
 
 #import "TodayViewController.h"
 #import "WSLDay.h"
+#import "NSArray+Functional.h"
 #import <NotificationCenter/NotificationCenter.h>
 
 @interface TodayViewController () <NCWidgetProviding>
@@ -43,6 +44,16 @@
     NSUInteger today = now.day;
     
     NSMutableArray* monthArray = [[NSMutableArray alloc] initWithCapacity:31];
+    
+    NSArray* weekday = [[cal weekdaySymbols] wsl_map:^(NSString* d) {
+        return [d substringToIndex:2];
+    }];
+    for (NSInteger idx = 0; idx < 7 ; idx++) {
+        WSLDay* day = [[WSLDay alloc] init];
+        day.date = weekday[(idx + [cal firstWeekday] - 1) % 7];
+        day.textColor = [NSColor darkGrayColor];
+        [monthArray addObject:day];
+    }
     
     // add some blanks at the beginning
     WSLDay* day = [[WSLDay alloc] init];
@@ -83,7 +94,7 @@
     NSDateComponents* subtractDay = [[NSDateComponents alloc] init];
     [subtractDay setDay:-1];
     NSDate* current = [cal dateByAddingComponents:subtractDay toDate:beginningOfMonth options:0];
-    for (--firstIndex; firstIndex >= 0; --firstIndex) {
+    for (--firstIndex; firstIndex >= 7; --firstIndex) {
         NSDateComponents* date = [cal components:NSCalendarUnitDay fromDate:current];
         WSLDay* day = [[WSLDay alloc] init];
         day.date = [NSString stringWithFormat:@"%lu", (unsigned long)date.day];
@@ -96,7 +107,7 @@
     NSDateComponents* addDay = [[NSDateComponents alloc] init];
     [addDay setDay:1];
     current = [cal dateByAddingComponents:addDay toDate:endMonth options:0];
-    NSInteger totalCount = 35 - [monthArray count];
+    NSInteger totalCount = 42 - [monthArray count];
     for (NSInteger i = 0; i < totalCount; i++) {
         WSLDay* day = [[WSLDay alloc] init];
         day.date = [NSString stringWithFormat:@"%lu", (unsigned long)i + 1];

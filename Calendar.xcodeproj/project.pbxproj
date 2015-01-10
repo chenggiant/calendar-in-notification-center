@@ -19,6 +19,7 @@
 		C419D7E81A6029E80023553C /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C419D7E71A6029E80023553C /* TodayViewController.xib */; };
 		C419D7EB1A6029E80023553C /* Calendar Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C419D7D91A6029E80023553C /* Calendar Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C419D7F21A602A9D0023553C /* WSLDay.m in Sources */ = {isa = PBXBuildFile; fileRef = C419D7F11A602A9D0023553C /* WSLDay.m */; };
+		C4400BA11A61C6D9006C5099 /* NSArray+Functional.m in Sources */ = {isa = PBXBuildFile; fileRef = C4400B9F1A61C6D9006C5099 /* NSArray+Functional.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,8 @@
 		C419D7E71A6029E80023553C /* TodayViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TodayViewController.xib; sourceTree = "<group>"; };
 		C419D7F01A602A9D0023553C /* WSLDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSLDay.h; sourceTree = "<group>"; };
 		C419D7F11A602A9D0023553C /* WSLDay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSLDay.m; sourceTree = "<group>"; };
+		C4400B9F1A61C6D9006C5099 /* NSArray+Functional.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Functional.m"; sourceTree = "<group>"; };
+		C4400BA01A61C6D9006C5099 /* NSArray+Functional.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Functional.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +180,8 @@
 			children = (
 				C419D7E41A6029E80023553C /* TodayViewController.h */,
 				C419D7E51A6029E80023553C /* TodayViewController.m */,
+				C4400BA01A61C6D9006C5099 /* NSArray+Functional.h */,
+				C4400B9F1A61C6D9006C5099 /* NSArray+Functional.m */,
 				C419D7E71A6029E80023553C /* TodayViewController.xib */,
 				C419D7F01A602A9D0023553C /* WSLDay.h */,
 				C419D7F11A602A9D0023553C /* WSLDay.m */,
@@ -347,6 +352,7 @@
 			files = (
 				C419D7E61A6029E80023553C /* TodayViewController.m in Sources */,
 				C419D7F21A602A9D0023553C /* WSLDay.m in Sources */,
+				C4400BA11A61C6D9006C5099 /* NSArray+Functional.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
