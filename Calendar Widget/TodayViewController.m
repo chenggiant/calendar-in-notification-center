@@ -18,6 +18,10 @@
 
 @property (nonatomic, strong) IBOutlet NSTextField* dateLabel;
 
+@property (nonatomic, strong) NSDate* displayDate;
+
+@property (strong) IBOutlet NSPanGestureRecognizer *swipeGestureRecognizer;
+
 @end
 
 @implementation TodayViewController
@@ -29,9 +33,9 @@
     self.collectionView.backgroundColors = @[ [NSColor clearColor] ];
 
     // Initialise date
-    NSDate* d = [NSDate date];
-    [self updateCalendar:d];
-    [self updateDateLabel:d];
+    self.displayDate = [NSDate date];
+    [self updateCalendar:self.displayDate];
+    [self updateDateLabel:self.displayDate];
 }
 
 - (void)updateDateLabel:(NSDate*) date {
@@ -138,6 +142,26 @@
     // with NoData if nothing has changed or NewData if there is new data since the last
     // time we called you
     completionHandler(NCUpdateResultNoData);
+}
+
+- (IBAction)swipeGesture:(NSPanGestureRecognizer*)sender {
+    if (sender.state == NSGestureRecognizerStateRecognized) {
+        NSPoint v = [sender velocityInView:self.collectionView];
+        if (v.y > 20.0) {
+            NSDateComponents* nextMonth = [[NSDateComponents alloc] init];
+            [nextMonth setMonth:-1]; // -1 month
+            self.displayDate = [[NSCalendar currentCalendar] dateByAddingComponents:nextMonth toDate:self.displayDate options:0];
+            [self updateCalendar:self.displayDate];
+            [self updateDateLabel:self.displayDate];
+        }
+        else if (v.y < -20.0) {
+            NSDateComponents* previousMonth = [[NSDateComponents alloc] init];
+            [previousMonth setMonth:1]; // +1 month
+            self.displayDate = [[NSCalendar currentCalendar] dateByAddingComponents:previousMonth toDate:self.displayDate options:0];
+            [self updateCalendar:self.displayDate];
+            [self updateDateLabel:self.displayDate];
+        }
+    }
 }
 
 @end

@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="collectionView" destination="Qph-Eu-UNX" id="0iz-qR-rL7"/>
                 <outlet property="dateLabel" destination="bcj-Ic-CdD" id="zzg-kT-03l"/>
+                <outlet property="swipeGestureRecognizer" destination="9cd-JJ-rXD" id="Hqw-oa-MRc"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -25,6 +26,13 @@
                             <collectionView focusRingType="none" maxNumberOfColumns="7" id="Qph-Eu-UNX">
                                 <rect key="frame" x="0.0" y="0.0" width="248" height="158"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <gestureRecognizers>
+                                    <panGestureRecognizer delaysPrimaryMouseButtonEvents="YES" id="9cd-JJ-rXD">
+                                        <connections>
+                                            <action selector="swipeGesture:" target="-2" id="gA9-br-snq"/>
+                                        </connections>
+                                    </panGestureRecognizer>
+                                </gestureRecognizers>
                                 <color key="primaryBackgroundColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <connections>
                                     <binding destination="tiL-am-HRd" name="content" keyPath="arrangedObjects" id="yV5-0T-IdO"/>
