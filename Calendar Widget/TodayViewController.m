@@ -103,9 +103,11 @@
     NSUInteger daysThisMonth = lastDay.day;
     
     // add the days
+    NSNumberFormatter* nf = [[NSNumberFormatter alloc] init];
+    nf.numberStyle = NSNumberFormatterDecimalStyle;
     for (NSUInteger i = 1; i <= daysThisMonth; i++) {
         WSLDay* day = [[WSLDay alloc] init];
-        day.date = [NSString stringWithFormat:@"%lu", (unsigned long)i];
+        day.date = [nf stringFromNumber:@(i)];
         day.textColor = (i == today) ? [NSColor greenColor] : [NSColor whiteColor];
         [monthArray addObject:day];
     }
@@ -117,7 +119,7 @@
     for (--firstIndex; firstIndex >= 7; --firstIndex) {
         NSDateComponents* date = [cal components:NSCalendarUnitDay fromDate:current];
         WSLDay* day = [[WSLDay alloc] init];
-        day.date = [NSString stringWithFormat:@"%lu", (unsigned long)date.day];
+        day.date = [nf stringFromNumber:@(date.day)];
         day.textColor = [NSColor lightGrayColor];
         monthArray[firstIndex] = day;
         current = [cal dateByAddingComponents:subtractDay toDate:current options:0];
@@ -133,7 +135,7 @@
     }
     for (NSInteger i = 0; i < totalCount; i++) {
         WSLDay* day = [[WSLDay alloc] init];
-        day.date = [NSString stringWithFormat:@"%lu", (unsigned long)i + 1];
+        day.date = [nf stringFromNumber:@(i + 1)];
         day.textColor = [NSColor lightGrayColor];
         [monthArray addObject:day];
         current = [cal dateByAddingComponents:addDay toDate:current options:0];
