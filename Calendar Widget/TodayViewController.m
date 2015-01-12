@@ -32,8 +32,15 @@
     // Setup view
     self.collectionView.backgroundColors = @[ [NSColor clearColor] ];
 
+    // Calculate the first of the month
+    NSDate* now = [NSDate date];
+    NSDateComponents* thisMonth = [[NSCalendar currentCalendar] components:NSCalendarUnitYear | NSCalendarUnitMonth
+                                                                  fromDate:now];
+    [thisMonth setDay:1];
+    now = [[NSCalendar currentCalendar] dateFromComponents:thisMonth];
+    
     // Initialise date
-    self.displayDate = [NSDate date];
+    self.displayDate = now;
     [self updateCalendar:self.displayDate];
     [self updateDateLabel:self.displayDate];
 }
