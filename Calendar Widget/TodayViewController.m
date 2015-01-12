@@ -9,6 +9,7 @@
 #import "TodayViewController.h"
 #import "WSLDay.h"
 #import "NSArray+Functional.h"
+#import "NSDate+WSL.h"
 #import <NotificationCenter/NotificationCenter.h>
 
 @interface TodayViewController () <NCWidgetProviding>
@@ -33,15 +34,8 @@
     // Setup view
     self.collectionView.backgroundColors = @[ [NSColor clearColor] ];
 
-    // Calculate the first of the month
-    NSDate* now = [NSDate date];
-    NSDateComponents* thisMonth = [[NSCalendar currentCalendar] components:NSCalendarUnitYear | NSCalendarUnitMonth
-                                                                  fromDate:now];
-    [thisMonth setDay:1];
-    now = [[NSCalendar currentCalendar] dateFromComponents:thisMonth];
-    
     // Initialise date
-    self.displayDate = now;
+    self.displayDate = [[NSDate date] wsl_beginningOfMonth];
     [self updateCalendar:self.displayDate];
     [self updateDateLabel:self.displayDate];
 }
@@ -162,17 +156,22 @@
 - (IBAction)swipeGesture:(NSPanGestureRecognizer*)sender {
     if (sender.state == NSGestureRecognizerStateRecognized) {
         NSPoint v = [sender velocityInView:self.collectionView];
+        NSDate* newDate = nil;
         if (v.y > 20.0) {
             NSDateComponents* nextMonth = [[NSDateComponents alloc] init];
             [nextMonth setMonth:-1]; // -1 month
-            self.displayDate = [[NSCalendar currentCalendar] dateByAddingComponents:nextMonth toDate:self.displayDate options:0];
-            [self updateCalendar:self.displayDate];
-            [self updateDateLabel:self.displayDate];
+            newDate = [[NSCalendar currentCalendar] dateByAddingComponents:nextMonth toDate:self.displayDate options:0];
         }
         else if (v.y < -20.0) {
             NSDateComponents* previousMonth = [[NSDateComponents alloc] init];
             [previousMonth setMonth:1]; // +1 month
-            self.displayDate = [[NSCalendar currentCalendar] dateByAddingComponents:previousMonth toDate:self.displayDate options:0];
+            newDate = [[NSCalendar currentCalendar] dateByAddingComponents:previousMonth toDate:self.displayDate options:0];
+        }
+        else if (v.x < -20.0) {
+            newDate = [[NSDate date] wsl_beginningOfMonth];
+        }
+        if (newDate) {
+            self.displayDate = newDate;
             [self updateCalendar:self.displayDate];
             [self updateDateLabel:self.displayDate];
         }
