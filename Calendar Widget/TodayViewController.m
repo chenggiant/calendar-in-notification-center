@@ -15,6 +15,7 @@
 
 @property (nonatomic, strong) NSMutableArray* days;
 @property (nonatomic, strong) IBOutlet NSCollectionView* collectionView;
+@property (strong) IBOutlet NSLayoutConstraint *collectionViewHeightConstraint;
 
 @property (nonatomic, strong) IBOutlet NSTextField* dateLabel;
 
@@ -55,13 +56,13 @@
 - (void)updateCalendar:(NSDate*)date {
     // Work out calendar
     NSCalendar* cal = [NSCalendar currentCalendar];
-    NSDateComponents* dateComponents = [cal components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear
-                                   fromDate:date];
-    NSDateComponents* nowCompoents = [cal components:NSCalendarUnitMonth | NSCalendarUnitYear
-                                            fromDate:[NSDate date]];
+    NSDateComponents* dateComponents = [cal components:NSCalendarUnitMonth | NSCalendarUnitYear
+                                              fromDate:date];
+    NSDateComponents* nowComponents = [cal components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear
+                                             fromDate:[NSDate date]];
     NSUInteger today;
-    if (nowCompoents.month == dateComponents.month && nowCompoents.year == dateComponents.year) {
-        today = dateComponents.day;
+    if (nowComponents.month == dateComponents.month && nowComponents.year == dateComponents.year) {
+        today = nowComponents.day;
     }
     else {
         // this will never be matched
@@ -132,7 +133,10 @@
     NSDateComponents* addDay = [[NSDateComponents alloc] init];
     [addDay setDay:1];
     current = [cal dateByAddingComponents:addDay toDate:endMonth options:0];
-    NSInteger totalCount = 42 - [monthArray count];
+    NSInteger totalCount = 7 - [monthArray count] % 7;
+    if (totalCount == 7) {
+        totalCount = 0;
+    }
     for (NSInteger i = 0; i < totalCount; i++) {
         WSLDay* day = [[WSLDay alloc] init];
         day.date = [NSString stringWithFormat:@"%lu", (unsigned long)i + 1];
@@ -140,6 +144,10 @@
         [monthArray addObject:day];
         current = [cal dateByAddingComponents:addDay toDate:current options:0];
     }
+
+    // Make sure the collection view (and widget) is big enough to display all the cells
+    CGSize cellSize = self.collectionView.itemPrototype.view.frame.size;
+    self.collectionViewHeightConstraint.constant = [monthArray count] / 7 * cellSize.height;
     
     self.days = monthArray;
 }
