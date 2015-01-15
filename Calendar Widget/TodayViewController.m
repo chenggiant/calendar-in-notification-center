@@ -141,6 +141,7 @@
 }
 
 - (void)widgetPerformUpdateWithCompletionHandler:(void (^)(NCUpdateResult result))completionHandler {
+    self.displayDate = [[NSDate date] wsl_beginningOfMonth];
     [self updateCalendar:self.displayDate];
     [self updateDateLabel:self.displayDate];
     
