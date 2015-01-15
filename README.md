@@ -2,6 +2,8 @@
 
 Mac Today widget showing a months calendar. It's simple, with no options. It uses your locale to determine whether your week starts on a Sunday (wrong) or Monday (correct).
 
+![Screen shot](https://raw.githubusercontent.com/sdarlington/Calendar/images/today-widget.png)
+
 ## User guide
 
 Swipe up and down to go to the next and previous month. Swipe left to go back to the current month.
