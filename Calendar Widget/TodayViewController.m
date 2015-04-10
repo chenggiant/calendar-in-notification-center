@@ -173,5 +173,32 @@
     }
 }
 
+
+- (IBAction)showPreviousMonth:(id)sender {
+    NSDate *newDate = nil;
+    NSDateComponents* previousMonth = [[NSDateComponents alloc] init];
+    [previousMonth setMonth:-1]; // +1 month
+    newDate = [[NSCalendar currentCalendar] dateByAddingComponents:previousMonth toDate:self.displayDate options:0];
+    if (newDate) {
+        self.displayDate = newDate;
+        [self updateCalendar:self.displayDate];
+        [self updateDateLabel:self.displayDate];
+    }
+}
+
+
+- (IBAction)showNextMonth:(id)sender {
+    NSDate *newDate = nil;
+    NSDateComponents* nextMonth = [[NSDateComponents alloc] init];
+    [nextMonth setMonth:1]; // +1 month
+    newDate = [[NSCalendar currentCalendar] dateByAddingComponents:nextMonth toDate:self.displayDate options:0];
+    if (newDate) {
+        self.displayDate = newDate;
+        [self updateCalendar:self.displayDate];
+        [self updateDateLabel:self.displayDate];
+    }
+}
+
+
 @end
 
