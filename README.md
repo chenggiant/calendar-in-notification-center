@@ -31,6 +31,8 @@ Build the app and save it somewhere safe (not in the Application's folder, since
 
 
 ## License
+    Calendar
+    Copyright (C) 2015 Wandle Software Limited
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
