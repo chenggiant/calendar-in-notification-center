@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>49CB57BB-1846-4407-A7A9-0765F4C3333E</string>
 	<key>IDESourceControlProjectName</key>
-	<string>Calendar</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>9497200BEFC544995E65B63F6893FBF004AB7F28</key>
 		<string>https://github.com/chenggiant/calendar-in-notification-center.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Calendar.xcodeproj</string>
+	<string>Calendar.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>9497200BEFC544995E65B63F6893FBF004AB7F28</key>

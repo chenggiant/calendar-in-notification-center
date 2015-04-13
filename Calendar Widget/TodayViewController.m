@@ -68,8 +68,15 @@
     NSNumberFormatter* nf = [[NSNumberFormatter alloc] init];
     nf.numberStyle = NSNumberFormatterDecimalStyle;
     
+    NSString *language = [[NSLocale preferredLanguages] objectAtIndex:0];
+//    NSLog(@"localeIdentifier: %@", language);
+
     // Add day names
     NSArray* weekday = [[cal weekdaySymbols] wsl_map:^(NSString* d) {
+        // if language is Chinese, only display data number.
+        if ([[language substringToIndex:2] isEqualToString:@"zh"]) {
+            return [d substringWithRange:NSMakeRange(2,1)];
+        }
         return [d substringToIndex:2];
     }];
     for (NSInteger idx = 0; idx < 7 ; idx++) {
