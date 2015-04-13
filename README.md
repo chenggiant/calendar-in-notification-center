@@ -21,7 +21,7 @@ This widget show a full month calendar in your Notification Center. It's simple,
 
 ### Option 1:
 
-Download the [following zip file](https://www.dropbox.com/s/dtyxw1n7g6ei1uj/Calendar-Widget.zip?dl=0) and double click the `Calendar.app`.
+Download the [following zip file](https://www.dropbox.com/s/7323tq5g6vme5cq/Calendar-Widget2.zip?dl=0) and double click the `Calendar.app`.
 
 
 
